@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="Andrzej Kierepka!">
+
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{css/style.css}" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-warning text-center">
+				Przykład z bazą danych
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+	<table id="bootstrap-data-table" class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th>LP</th>
+                        <th>Imie</th>
+                        <th>Nazwisko</th>
+                        <th>Adres</th>
+                        <th>Usuń</th>
+                        <th>Edytuj</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user,iterationStatus  : ${users}">
+                        <td th:text="${iterationStatus.count}">1</td>
+                        <td th:text="${user.name}">001</td>
+                        <td th:text="${user.lastName}">Name</td>
+                        <td th:text="${user.adress}">Name</td>
+                        <td> 
+						<form action="#" th:action="@{/User/(id=${user.id})}" th:method="delete" >
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" id="submitButton"> Usuń</button>
+                        </form>
+                        </td>
+                        <td> 
+						<form action="#" th:action="@{/User/(id=${user.id})}" th:method="put" >
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" id="submitButton"> Edytuj</button>
+                        </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <br>
+                  <a href="/">Powrót do głównego okna</a>
+                  <br/>
+                  <div th:if="${#strings.toString(delete)} == 'yes'"   class="card-body">
+        <div class="alert alert-primary" role="alert">
+  				Poprawnie usunięto rekord z bazy danych.
+		</div>
+		                              
+        </div>
+		</div>
+		<div class="col-md-4">
+		
+		</div>
+	</div>
+	</div>
+    <script th:src="@{js/jquery.min.js}"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+    <script th:src="@{js/scripts.js}"></script>
+  </body>
+</html>

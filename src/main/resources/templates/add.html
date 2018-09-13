@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="Andrzej Kierepka!">
+
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{css/style.css}" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-warning text-center">
+				Formularz osobowy
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<form role="form" th:action="@{/User/}"
+                    th:object="${user}"  th:method="post">
+				<div class="form-group">
+					<label for="name">
+						Wprowadź imię
+					</label>
+					<input class="form-control" th:field="*{name}" id="name" type="text">
+				</div>
+				<div class="form-group">
+					<label for="lastName">
+						Nazwisko
+					</label>
+					<input class="form-control" th:field="*{lastName}" id="lastName" type="text">
+				</div>
+				<div class="form-group">
+					<label for="weight">
+						Adres zamieszkania
+					</label>
+					<input class="form-control" th:field="*{adress}" id="adress" type="text">
+				</div>
+				<button type="submit" class="btn btn-primary">
+					Zapisz
+				</button>
+			</form>
+		     <div th:if="${#strings.toString(add)} == 'yes'"   class="card-body">
+        <div class="alert alert-primary" role="alert">
+  				Poprawnie dodano rekord do bazy danych.
+		</div>                              
+        </div>
+			</div>
+			
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
